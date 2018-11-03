@@ -47,7 +47,7 @@
         },
         "Behaviour": {
             "Enabled": true,
-            "Number" : 2,
+            "Number" : 3,
             "Name" : "Lucy"
         }
     }
