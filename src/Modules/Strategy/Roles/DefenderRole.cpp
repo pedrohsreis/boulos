@@ -67,8 +67,12 @@ void DefenderRole::Tick(float ellapsedTime, const SensorValues &sensor)
                 {
                     spellBook->motion.Vth = 0; //min(spellBook->perception.vision.ball.BallYaw * rr.getDistance(), Deg2Rad(0.3f));
                     spellBook->motion.Vx = abs(min(coord.getX(), 0.1f));
+<<<<<<< HEAD
                     spellBook->motion.Vy = (coord.getY(), 0.05f);
                     // Corrigir usando velocidade angular
+=======
+                    spellBook->motion.Vy = min(coord.getY(), 0.05f) * SIG(rr.getYaw());
+>>>>>>> 1bf6c615ea482ab8d5ceadf9ab8e9032208cb611
                 }
                 else
                 {
@@ -84,7 +88,7 @@ void DefenderRole::Tick(float ellapsedTime, const SensorValues &sensor)
                 {
                     spellBook->motion.Vth = 0; //min(spellBook->perception.vision.ball.BallYaw * rr.getDistance(), Deg2Rad(0.1f));
                     spellBook->motion.Vx = abs(min(coord.getX(), 0.15f));
-                    spellBook->motion.Vy = coord.getY() * 0.05f;
+                    spellBook->motion.Vy = (coord.getY() * 0.05f) * SIG(rr.getYaw());
                 }
                 else
                 {
@@ -117,6 +121,7 @@ void DefenderRole::Tick(float ellapsedTime, const SensorValues &sensor)
                 spellBook->motion.HeadPitch = Deg2Rad(25);
             else
             {
+                contPerdido = 0;
                 scanPitch += Deg2Rad(20);
                 if(scanPitch > spellBook->strategy.HeadPitchRange)
                     scanPitch = 0;
@@ -125,7 +130,11 @@ void DefenderRole::Tick(float ellapsedTime, const SensorValues &sensor)
             cout << "Quantas iterações: " << contPerdido << endl;
             spellBook->motion.Vx = 0.01f;
             spellBook->motion.Vy = 0;
+<<<<<<< HEAD
             spellBook->motion.Vth = SIG(spellBook->perception.vision.ball.BallYaw)*Deg2Rad(5);
+=======
+            spellBook->motion.Vth = Deg2Rad(5) * SIG(rr.getYaw());
+>>>>>>> 1bf6c615ea482ab8d5ceadf9ab8e9032208cb611
             cout << "Else IF distancia < 0.5" << endl;
         }
         else
@@ -133,7 +142,17 @@ void DefenderRole::Tick(float ellapsedTime, const SensorValues &sensor)
             cout << "se perdeu: " << endl;
             spellBook->motion.Vx = 0.01f;
             spellBook->motion.Vy = 0.02f;
+<<<<<<< HEAD
             spellBook->motion.Vth = SIG(spellBook->perception.vision.ball.BallYaw)*Deg2Rad(1.0f);
         }
     }*/
+=======
+            spellBook->motion.Vth = Deg2Rad(1.0f) * SIG(rr.getYaw());
+        }
+    }else{
+        spellBook->motion.Vx = 1;
+        spellBook->motion.Vy = 0;
+        spellBook->motion.Vth = 0;
+    }
+>>>>>>> 1bf6c615ea482ab8d5ceadf9ab8e9032208cb611
 }

@@ -47,8 +47,13 @@
         },
         "Behaviour": {
             "Enabled": true,
+<<<<<<< HEAD
             "Number" : 3,
             "Name" : "Lucy"
+=======
+            "Number" : 2,
+            "Names" : ["NAO 1", "NAO 2", "NAO 3", "NAO 4", "NAO 5", "NAO 6"]
+>>>>>>> 1bf6c615ea482ab8d5ceadf9ab8e9032208cb611
         }
     }
 }
